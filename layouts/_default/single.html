@@ -3,17 +3,17 @@
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}
-    <h1 class="post-title">
+    <h1 class="post-title" dir="{{ (.Param "dir") }}">
       {{ .Title }}
       {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
     </h1>
     {{- if .Description }}
-    <div class="post-description">
+    <div class="post-description" dir="{{ (.Param "dir") }}">
       {{ .Description }}
     </div>
     {{- end }}
     {{- if not (.Param "hideMeta") }}
-    <div class="post-meta">
+    <div class="post-meta" dir="{{ (.Param "dir") }}">
       {{- partial "post_meta.html" . -}}
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
@@ -28,7 +28,7 @@
   {{- end }}
 
   {{- if .Content }}
-  <div class="post-content">
+  <div class="post-content" dir="{{ (.Param "dir") }}">
     {{- if not (.Param "disableAnchoredHeadings") }}
     {{- partial "anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
@@ -37,7 +37,7 @@
 
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
-    <ul class="post-tags">
+    <ul class="post-tags" dir="{{ (.Param "dir") }}">
       {{- range ($.GetTerms $tags) }}
       <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
