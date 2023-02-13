@@ -119,6 +119,9 @@
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 {{ end -}}
 
+{{- /* Gif-player */ }}
+<script src="/dist/webcomponents-loader.js"></script>
+<script src="/dist/gif-player.es6.js" defer async></script>
 <noscript>
     <style>
         #theme-toggle,
